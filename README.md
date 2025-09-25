@@ -41,25 +41,31 @@ O projeto está estruturado em três etapas principais:
 - Python 3.x
 - pip (gerenciador de pacotes Python)
 
-### Instalação de Dependências
+### 🔧 Configuração de Dependências
 ```bash
 py -m pip install opencv-python pandas tqdm
 ```
 
+**Dependências utilizadas:**
+- `opencv-python` - Processamento de imagem e vídeo
+- `pandas` - Manipulação dos arquivos CSV de legendas  
+- `tqdm` - Barras de progresso durante processamento
+
 ### Dataset
 Este projeto utiliza o dataset **20BN-Jester V1** para reconhecimento de gestos:
-- [Download dos vídeos](https://20bn.com/datasets/jester)
-- [Download das legendas](https://20bn.com/datasets/jester) (arquivos .csv separados)
+- [Download dos vídeos](https://20bn.com/datasets/jester) - Frames em formato JPG organizados por pasta
+- [Download das legendas](https://20bn.com/datasets/jester) - Arquivos CSV separados
 
-Estrutura de arquivos esperada:
+**Arquivos necessários:**
 ```
 projeto/
-├── 20bn-jester-v1/          # Vídeos do dataset
-├── jester-v1-train.csv      # Legendas de treino
-├── jester-v1-validation.csv # Legendas de validação
+├── 20bn-jester-v1/              # Pasta com subpastas numeradas (cada uma contém frames JPG)
+├── jester-v1-labels.csv         # Lista completa de todos os gestos
+├── jester-v1-train.csv          # Mapeamento ID → gesto (treino)
+├── jester-v1-validation.csv     # Mapeamento ID → gesto (validação)
 └── scripts/
-    ├── process_jester.py    # Processamento de dados
-    └── inspect_labels.py    # Diagnóstico de gestos
+    ├── process_jester.py        # Processamento principal
+    └── inspect_labels.py        # Diagnóstico de gestos
 ```
 
 ## 📁 Estrutura do Projeto
@@ -80,18 +86,24 @@ smartcam-ai/
 
 ## 🚀 Como Usar
 
-### 1. Processamento de Dados
-Primeiro, execute o script de diagnóstico para identificar os gestos disponíveis:
+### 1. Identificação dos Gestos Disponíveis
+Primeiro, execute o script de diagnóstico para ver todos os gestos disponíveis no dataset:
 ```bash
 py inspect_labels.py
 ```
+Este script lê o arquivo `jester-v1-labels.csv` e lista todos os gestos únicos disponíveis.
 
-Em seguida, processe o dataset:
+### 2. Processamento de Dados
+Após identificar os gestos desejados, atualize a lista `TARGET_GESTURES` no arquivo `process_jester.py` e execute:
 ```bash
 py process_jester.py
 ```
 
-### 2. Treinamento (Em desenvolvimento)
+**Gestos atualmente configurados:**
+- `Thumb up` - Sinal de "positivo" com o polegar
+- `Stop Sign` - Sinal de "pare" com a mão aberta
+
+### 3. Treinamento (Em desenvolvimento)
 ```bash
 py train_model.py
 ```
@@ -101,30 +113,36 @@ py train_model.py
 ### Problema: 'python' não é reconhecido
 **Solução**: Use `py` em vez de `python` no Windows, ou configure a variável PATH.
 
-### Problema: ModuleNotFoundError
+### Problema: ModuleNotFoundError 
 **Solução**: 
 ```bash
 py -m pip install [nome_do_modulo]
 ```
 
-### Problema: Arquivos .csv não encontrados
-**Solução**: Baixe os arquivos de legenda separadamente do site do dataset 20BN-Jester.
+### Problema: Arquivo 'jester-v1-labels.csv' não encontrado
+**Solução**: Baixe todos os arquivos CSV de legendas separadamente do site do dataset 20BN-Jester. São 3 arquivos:
+- `jester-v1-labels.csv` (lista de gestos)
+- `jester-v1-train.csv` (mapeamento treino)  
+- `jester-v1-validation.csv` (mapeamento validação)
+
+### Problema: Gestos não encontrados no processamento
+**Solução**: Execute `py inspect_labels.py` para ver os nomes exatos dos gestos e atualize a lista `TARGET_GESTURES` no arquivo `process_jester.py`.
 
 ## 📊 Status Atual
 
 ### ✅ Concluído
 - [x] Configuração do ambiente de desenvolvimento
-- [x] Resolução de problemas de dependências
-- [x] Script de processamento de dados funcional
-- [x] Script de diagnóstico de rótulos
+- [x] Resolução de problemas de dependências  
+- [x] Script de processamento de dados (`process_jester.py`)
+- [x] Script de diagnóstico de gestos (`inspect_labels.py`)
+- [x] Identificação dos gestos corretos no dataset
 
 ### 🔄 Em Progresso
-- [ ] Identificação dos gestos corretos no dataset
-- [ ] Processamento final dos frames de vídeo
-- [ ] Atualização da lista `TARGET_GESTURES`
+- [ ] Processamento final dos frames de vídeo para os gestos selecionados
+- [ ] Validação da qualidade dos dados processados
 
 ### ⏳ Próximos Passos
-- [ ] Desenvolvimento do script de treinamento
+- [ ] Desenvolvimento do script de treinamento (`train_model.py`)
 - [ ] Implementação da CNN baseline (MobileNetV3)
 - [ ] Métricas de desempenho e consumo energético
 - [ ] Conversão para SNN (Etapa 2)
