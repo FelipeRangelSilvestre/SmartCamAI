@@ -1,146 +1,194 @@
-# SmartCam AI
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apresentação de Progresso - SmartCam AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
-## 🎯 Visão Geral
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 2em;
+        }
 
-O **SmartCam AI** é um projeto de pesquisa focado no desenvolvimento de um sistema de visão computacional ultra-eficiente para dispositivos móveis. Nosso objetivo principal é criar uma solução "always-on" que utiliza princípios de computação neuromórfica para reduzir drasticamente o consumo de energia.
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
 
-### Problema
-Os sistemas tradicionais de ativação por câmera e interfaces sem toque consomem energia excessiva, limitando sua aplicação prática em dispositivos móveis.
+        .slide {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            padding: 2em;
+            margin-bottom: 2.5em;
+            border-left: 5px solid #4a90e2;
+        }
 
-### Nossa Solução
-Implementação de Redes Neurais Spiking (SNNs) inspiradas em computação neuromórfica para alcançar uma **redução de 10x no consumo de energia** em comparação com métodos convencionais.
+        h1, h2, h3 {
+            color: #1c3d5a;
+        }
 
-## 🗺️ Roadmap do Projeto
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+            color: #4a90e2;
+        }
 
-O projeto está estruturado em três etapas principais:
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 2px solid #e8e8e8;
+            padding-bottom: 0.5em;
+            margin-bottom: 1em;
+        }
+        
+        h3 {
+            font-size: 1.2em;
+            color: #34495e;
+            margin-top: 1.5em;
+        }
 
-### Etapa 1: Linha de Base (Baseline) ⚡
-- **Objetivo**: Estabelecer uma referência de desempenho
-- **Tecnologia**: CNN tradicional (MobileNetV3)
-- **Status**: 🔄 Em desenvolvimento - processamento de dados
+        p, ul {
+            margin-bottom: 1em;
+        }
 
-### Etapa 2: Transição Neuromórfica 🧠
-- **Objetivo**: Converter CNN para SNN otimizada
-- **Foco**: Máxima eficiência energética
-- **Status**: ⏳ Aguardando conclusão da Etapa 1
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
 
-### Etapa 3: Demonstração e Análise 📊
-- **Objetivo**: Simulação em hardware neuromórfico
-- **Entrega**: Comparação completa com baseline
-- **Status**: ⏳ Planejado
+        li {
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            padding: 0.8em 1.2em;
+            margin-bottom: 0.5em;
+            display: flex;
+            align-items: center;
+        }
+        
+        li::before {
+            content: '🔹';
+            margin-right: 1em;
+            color: #4a90e2;
+        }
+        
+        .status-atual li::before { content: '➡️'; }
+        .proximo-passo li::before { content: '🚀'; }
 
-## 🔧 Configuração do Ambiente
 
-### Pré-requisitos
-- Python 3.x
-- pip (gerenciador de pacotes Python)
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #eef1f3;
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
 
-### Instalação de Dependências
-```bash
-py -m pip install opencv-python pandas tqdm
-```
+        pre {
+            background-color: #2d3748;
+            color: #f7fafc;
+            padding: 1em;
+            border-radius: 8px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+        
+        .subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            color: #7f8c8d;
+            margin-top: -1em;
+            margin-bottom: 2em;
+        }
+        
+        .success {
+            border-left-color: #28a745;
+        }
+        
+        .problem {
+            border-left-color: #dc3545;
+        }
 
-### Dataset
-Este projeto utiliza o dataset **20BN-Jester V1** para reconhecimento de gestos:
-- [Download dos vídeos](https://20bn.com/datasets/jester)
-- [Download das legendas](https://20bn.com/datasets/jester) (arquivos .csv separados)
+    </style>
+</head>
+<body>
 
-Estrutura de arquivos esperada:
-```
-projeto/
-├── 20bn-jester-v1/          # Vídeos do dataset
-├── jester-v1-train.csv      # Legendas de treino
-├── jester-v1-validation.csv # Legendas de validação
-└── scripts/
-    ├── process_jester.py    # Processamento de dados
-    └── inspect_labels.py    # Diagnóstico de gestos
-```
+    <div class="container">
 
-## 📁 Estrutura do Projeto
+        <h1>Apresentação de Progresso</h1>
+        <p class="subtitle">Projeto SmartCam AI: Da Ideia à Execução</p>
 
-```
-smartcam-ai/
-├── scripts/
-│   ├── process_jester.py     # Processamento principal do dataset
-│   ├── inspect_labels.py     # Inspeção de rótulos
-│   └── train_model.py        # [Em desenvolvimento] Treinamento do modelo
-├── data/
-│   └── processed/           # Dados processados
-├── models/
-│   └── baseline/           # Modelos da linha de base
-└── docs/
-    └── progress_report.html # Relatório de progresso
-```
+        <div class="slide">
+            <h2>🎯 A Missão: IA Ultra-Eficiente</h2>
+            <p>O objetivo do projeto SmartCam AI é desenvolver uma prova de conceito para um sistema de visão computacional "always-on" para dispositivos móveis, com foco em resolver o principal obstáculo da IA embarcada: o alto consumo de energia.</p>
+            <ul>
+                <li><strong>Problema:</strong> Ativação de câmera e interfaces sem toque consomem muita bateria.</li>
+                <li><strong>Solução Proposta:</strong> Utilizar princípios de computação neuromórfica e Redes Neurais Spiking (SNNs).</li>
+                <li><strong>Meta Principal:</strong> Alcançar uma <strong>redução de 10x</strong> no consumo de energia em comparação com métodos tradicionais.</li>
+            </ul>
+        </div>
 
-## 🚀 Como Usar
+        <div class="slide">
+            <h2>🗺️ Nosso Plano de Ação</h2>
+            <p>Definimos um roteiro claro, dividido em três etapas principais, para garantir um desenvolvimento metódico e comparável.</p>
+            <ul>
+                <li><strong>Etapa 1: Linha de Base (Baseline)</strong><br>Criar e medir o desempenho de uma solução tradicional com CNN (MobileNetV3) para estabelecer uma referência.</li>
+                <li><strong>Etapa 2: Transição Neuromórfica</strong><br>Converter a CNN para uma Rede Neural Spiking (SNN) e otimizá-la para máxima eficiência.</li>
+                <li><strong>Etapa 3: Demonstração e Análise</strong><br>Simular a SNN em uma arquitetura de hardware neuromórfica e comparar os resultados com a linha de base.</li>
+            </ul>
+        </div>
 
-### 1. Processamento de Dados
-Primeiro, execute o script de diagnóstico para identificar os gestos disponíveis:
-```bash
-py inspect_labels.py
-```
+        <div class="slide problem">
+            <h2>🐛 A Jornada do Debug: Resolvendo Problemas Reais</h2>
+            <p>A fase de preparação de dados, crucial para o sucesso da Etapa 1, apresentou uma série de desafios técnicos que resolvemos passo a passo.</p>
+            
+            <h3>Problema 1: Ambiente não configurado</h3>
+            <p>O terminal não reconhecia os comandos básicos do Python.</p>
+            <pre><code>'python' não é reconhecido como um comando interno ou externo...</code></pre>
+            <ul>
+                <li><strong>Solução:</strong> Diagnosticamos o problema da variável de ambiente `PATH` e utilizamos o `py.exe` launcher para executar os scripts corretamente.</li>
+            </ul>
 
-Em seguida, processe o dataset:
-```bash
-py process_jester.py
-```
+            <h3>Problema 2: Bibliotecas ausentes</h3>
+            <p>O script não encontrava as bibliotecas necessárias para o processamento.</p>
+            <pre><code>ModuleNotFoundError: No module named 'cv2'</code></pre>
+            <ul>
+                <li><strong>Solução:</strong> Utilizamos o comando `py -m pip install` para garantir que as bibliotecas (`opencv-python`, `pandas`, `tqdm`) fossem instaladas no ambiente correto.</li>
+            </ul>
 
-### 2. Treinamento (Em desenvolvimento)
-```bash
-py train_model.py
-```
+            <h3>Problema 3: Arquivos de legenda (.csv) ausentes</h3>
+            <p>O script falhava ao tentar ler os arquivos que mapeiam vídeos aos gestos.</p>
+            <pre><code>FileNotFoundError: ... jester-v1-train.csv</code></pre>
+            <ul>
+                <li><strong>Solução:</strong> Identificamos que as legendas eram um download separado no site do Jester e orientamos o download e posicionamento correto dos arquivos.</li>
+            </ul>
+        </div>
+        
+        <div class="slide success">
+            <h2>➡️ Status Atual e Próximos Passos</h2>
+            <p>Após uma série de depurações, o script de processamento agora executa sem erros, mas ainda não encontra os gestos. Estamos na fase final de ajuste dos dados.</p>
+            
+            <h3 class="status-atual">Onde Estamos Agora</h3>
+            <ul>
+                <li><strong>Ação em Andamento:</strong> Acabamos de criar um script de diagnóstico (`inspect_labels.py`) para descobrir os nomes exatos dos gestos contidos nos arquivos de legenda do Jester.</li>
+                <li><strong>Aguardando:</strong> A lista de gestos que será gerada por este script.</li>
+            </ul>
+            
+            <h3 class="proximo-passo">Próximos Passos Imediatos</h3>
+            <ul>
+                <li><strong>Ação 1:</strong> Atualizar a lista `TARGET_GESTURES` no script `process_jester.py` com os nomes corretos que descobrirmos.</li>
+                <li><strong>Ação 2:</strong> Executar o `process_jester.py` uma última vez para finalmente processar e salvar os frames do nosso dataset.</li>
+                <li><strong>Marco Seguinte:</strong> Iniciar a escrita do script `train_model.py` para treinar nossa CNN com os dados prontos.</li>
+            </ul>
+        </div>
 
-## 🐛 Problemas Conhecidos e Soluções
+    </div>
 
-### Problema: 'python' não é reconhecido
-**Solução**: Use `py` em vez de `python` no Windows, ou configure a variável PATH.
-
-### Problema: ModuleNotFoundError
-**Solução**: 
-```bash
-py -m pip install [nome_do_modulo]
-```
-
-### Problema: Arquivos .csv não encontrados
-**Solução**: Baixe os arquivos de legenda separadamente do site do dataset 20BN-Jester.
-
-## 📊 Status Atual
-
-### ✅ Concluído
-- [x] Configuração do ambiente de desenvolvimento
-- [x] Resolução de problemas de dependências
-- [x] Script de processamento de dados funcional
-- [x] Script de diagnóstico de rótulos
-
-### 🔄 Em Progresso
-- [ ] Identificação dos gestos corretos no dataset
-- [ ] Processamento final dos frames de vídeo
-- [ ] Atualização da lista `TARGET_GESTURES`
-
-### ⏳ Próximos Passos
-- [ ] Desenvolvimento do script de treinamento
-- [ ] Implementação da CNN baseline (MobileNetV3)
-- [ ] Métricas de desempenho e consumo energético
-- [ ] Conversão para SNN (Etapa 2)
-
-## 🤝 Contribuição
-
-Este é um projeto de pesquisa em desenvolvimento. Para contribuir:
-
-1. Fork o projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
-
-## 📄 Licença
-
-Este projeto está sob licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
-
-## 📧 Contato
-
-Para dúvidas ou colaborações, entre em contato através dos issues do GitHub.
-
----
-
-**Nota**: Este projeto está em desenvolvimento ativo. A documentação será atualizada conforme o progresso das etapas.
+</body>
+</html>
