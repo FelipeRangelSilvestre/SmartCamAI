@@ -1,14 +1,20 @@
 # SmartCam AI
 
-## 🎯 Visão Geral
+## 🎯 O que nossa aplicação faz
 
-O **SmartCam AI** é um projeto de pesquisa focado no desenvolvimento de um sistema de visão computacional ultra-eficiente para dispositivos móveis. Nosso objetivo principal é criar uma solução "always-on" que utiliza princípios de computação neuromórfica para reduzir drasticamente o consumo de energia.
+O **SmartCam AI** é uma aplicação de visão computacional que reconhece gestos das mãos em tempo real usando a câmera do dispositivo móvel, mas com um diferencial revolucionário: **consome 10 vezes menos bateria** que as soluções tradicionais.
 
-### Problema
-Os sistemas tradicionais de ativação por câmera e interfaces sem toque consomem energia excessiva, limitando sua aplicação prática em dispositivos móveis.
+### Funcionalidade Principal
+A aplicação fica "sempre ligada" no background do seu celular, monitorando continuamente através da câmera para detectar gestos específicos das mãos. Quando você faz um gesto reconhecido (como acenar, apontar, ou fazer um sinal de "ok"), a aplicação pode:
 
-### Nossa Solução
-Implementação de Redes Neurais Spiking (SNNs) inspiradas em computação neuromórfica para alcançar uma **redução de 10x no consumo de energia** em comparação com métodos convencionais.
+- Ativar funcionalidades do telefone sem precisar tocar na tela
+- Controlar aplicativos através de comandos gestuais  
+- Responder a comandos visuais mesmo quando o celular está na mesa
+
+### O Diferencial: Eficiência Energética
+**Problema atual**: Aplicações que usam câmera constantemente drenam a bateria muito rápido, tornando impraticável manter a funcionalidade sempre ativa.
+
+**Nossa solução**: Utilizamos uma tecnologia inspirada no funcionamento do cérebro humano (Redes Neurais Spiking) que processa informações visuais de forma muito mais eficiente, permitindo que a aplicação funcione o dia todo sem impactar significativamente a bateria.
 
 ## 🗺️ Roadmap do Projeto
 
